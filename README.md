@@ -10,6 +10,10 @@ If you are a superuser, you can use adminer UI tool to view transaction, change 
 
 Download this repository and run following commands:
 
+```
 pip install requirement.txt
+```
 
+```
 python manage.py runserver
+```
