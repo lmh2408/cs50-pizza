@@ -1,4 +1,4 @@
-# lmh2408
+# CS50 Pizza
 
 This is a CS50 Project 3, a Django web application.
 
