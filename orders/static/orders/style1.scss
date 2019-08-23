@@ -1,0 +1,125 @@
+
+
+body {
+
+	background-image: linear-gradient(rgba(246, 246, 246, 0.85), rgba(251, 251, 251, 0.93)), url("images/background-body.jpg");
+	background-repeat: no-repeat;
+    background-size: auto 100%;
+	@media (min-width: 576px) {
+        background-size: 100%;
+    };
+
+    nav {
+        background: #931616;
+    }
+
+    .navbar-light .navbar-brand, .navbar-light .navbar-brand:hover {
+    	color: white;
+    }
+
+    .navbar-toggler {
+    	background: white;
+        border-color: gray;
+    }
+
+    .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:hover{
+    	color: white;
+        font-size: 1.1rem;
+    }
+
+}
+
+footer {
+    background: #0E4F03;
+    color:white;
+    font-size:1rem;
+    margin-top: 8rem;
+}
+
+#pinocchio {
+    width: 5rem;
+}
+
+// index
+$button-background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52));
+
+%button-bg-position {
+    height: 6rem;
+	border-radius: 6px;
+	background-position: center center;
+    background-size: 35rem;
+    @media (min-width: 768px) {
+        background-size: 24rem;
+    };
+	background-repeat: no-repeat;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+%absolute-center {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-pizza-bg {
+    background-image: $button-background, url("images/pizza.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-sicilian-bg {
+    background-image: $button-background, url("images/sicilia.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-subs-bg {
+    background-image: $button-background, url("images/subs.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-pasta-bg {
+    background-image: $button-background, url("images/pasta.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-salad-bg {
+    background-image: $button-background, url("images/salad.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-dinner_platter-bg {
+    background-image: $button-background, url("images/dinner_platter.jpg");
+    @extend %button-bg-position;
+}
+
+.menu-title {
+    @extend %absolute-center;
+    font-size:1.3rem;
+    color:white;
+}
+
+
+// item.html
+
+.item-list, .item-list:hover{
+	background: #FFF1BF;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 6px;
+	color: black;
+	text-decoration-line: none;
+	cursor: pointer;
+}
+
+#notification {
+	position: fixed;
+	top: 7rem;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 22rem;
+}
+
+.topping_check
+{
+
+}

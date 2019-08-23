@@ -1,0 +1,83 @@
+body {
+  background-image: linear-gradient(rgba(246, 246, 246, 0.85), rgba(251, 251, 251, 0.93)), url("images/background-body.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 100%; }
+  @media (min-width: 576px) {
+    body {
+      background-size: 100%; } }
+  body nav {
+    background: #931616; }
+  body .navbar-light .navbar-brand, body .navbar-light .navbar-brand:hover {
+    color: white; }
+  body .navbar-toggler {
+    background: white;
+    border-color: gray; }
+  body .navbar-light .navbar-nav .nav-link, body .navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+    font-size: 1.1rem; }
+
+footer {
+  background: #0E4F03;
+  color: white;
+  font-size: 1rem;
+  margin-top: 8rem; }
+
+#pinocchio {
+  width: 5rem; }
+
+.menu-pizza-bg, .menu-sicilian-bg, .menu-subs-bg, .menu-pasta-bg, .menu-salad-bg, .menu-dinner_platter-bg {
+  height: 6rem;
+  border-radius: 6px;
+  background-position: center center;
+  background-size: 35rem;
+  background-repeat: no-repeat;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); }
+  @media (min-width: 768px) {
+    .menu-pizza-bg, .menu-sicilian-bg, .menu-subs-bg, .menu-pasta-bg, .menu-salad-bg, .menu-dinner_platter-bg {
+      background-size: 24rem; } }
+
+.menu-title {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.menu-pizza-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/pizza.jpg"); }
+
+.menu-sicilian-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/sicilia.jpg"); }
+
+.menu-subs-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/subs.jpg"); }
+
+.menu-pasta-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/pasta.jpg"); }
+
+.menu-salad-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/salad.jpg"); }
+
+.menu-dinner_platter-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.52)), url("images/dinner_platter.jpg"); }
+
+.menu-title {
+  font-size: 1.3rem;
+  color: white; }
+
+.item-list, .item-list:hover {
+  background: #FFF1BF;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: black;
+  text-decoration-line: none;
+  cursor: pointer; }
+
+#notification {
+  position: fixed;
+  top: 7rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22rem; }
+
+/*# sourceMappingURL=style1.css.map */

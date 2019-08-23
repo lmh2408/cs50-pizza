@@ -1,0 +1,95 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Choose size{% endblock %}
+
+{% block body %}
+
+    {% if not user.is_authenticated %}
+        <div class="row">
+            <div class="col">
+                Please log in to order item!
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col">
+            Choose size for {{ pizza.pizza_type.pizza_type }} - {{ pizza.pizza_topping_number.pizza_topping_number }}
+        </div>
+    </div>
+
+    <form action="{% url 'orders:pizza_order' pizza_type=pizza.pizza_type.pizza_type pizza_top_type=pizza.pizza_topping_number.pizza_topping_number %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <label for="small-size">
+                    <input name="size" type="radio" id="small-size" value="sml" checked>
+                    <span>Small: ${{ pizza.small_price }}</span>
+                </label>
+            </div>
+
+            <div class="col">
+                <label for="large-size">
+                    <input name="size" type="radio" id="large-size" value="lrg">
+                    <span>Large: ${{ pizza.large_price }}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 col-md-3">
+                <input class="form-control" type="number" name="quantity" placeholder="How many?" value="1" required>
+            </div>
+        </div>
+
+        {% if pizza.pizza_topping_number.topping_number != 0 %}
+            <div class="row">
+                <div class="col">
+                    Choose: {{ pizza.pizza_topping_number.topping_number }} toppings
+                </div>
+            </div>
+
+            <div class="row">
+                {% for topping in topping_list %}
+                <div class="col-10 col-md-6">
+                    <label for="{{ topping.pizza_topping }}">
+                        <input class="topping_check" name="topping[]" type="checkbox" id="{{ topping.pizza_topping }}" value="{{ topping.pizza_topping }}">
+                        <span>{{ topping.pizza_topping }}</span>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <script>
+                // limit check box by jaredhoyt
+                // https://stackoverflow.com/questions/10458924/limit-checked-checkbox-in-a-form
+                jQuery(function(){
+                var max = Number({{ pizza.pizza_topping_number.topping_number }});
+                    var checkboxes = $('input[type="checkbox"]');
+
+                    checkboxes.change(function(){
+                    var current = checkboxes.filter(':checked').length;
+                    checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+                    });
+                });
+            </script>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary">Order</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col">
+                    Please log in to order item!
+                </div>
+            </div>
+        {% endif %}
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Pinocchio's Pizza & Subs{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-center">
+        <a href="{% url 'orders:item' item_name='Regular Pizza' %}" class="col-10 col-md-3 mb-4">
+            <div class="menu-pizza-bg"></div>
+            <div class="menu-title">
+                <span>Regular pizza</span>
+            </div>
+        </a>
+
+        <a href="{% url 'orders:item' item_name='Sicilian Pizza' %}" class="col-10 col-md-3 ml-md-5 mb-4">
+            <div class="menu-sicilian-bg"></div>
+            <div class="menu-title">
+                <span>Sicilian pizza</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <a href="{% url 'orders:item' item_name='Subs' %}" class="col-10 col-md-3 mb-4">
+            <div class="menu-subs-bg"></div>
+            <div class="menu-title">
+                <span>Subs</span>
+            </div>
+        </a>
+
+        <a href="{% url 'orders:item' item_name='Pasta' %}" class="col-10 col-md-3 ml-md-5 mb-4">
+            <div class="menu-pasta-bg"></div>
+            <div class="menu-title">
+                <span>Pasta</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <a href="{% url 'orders:item' item_name='Salads' %}" class="col-10 col-md-3 mb-4">
+            <div class="menu-salad-bg"></div>
+            <div class="menu-title">
+                <span>Salads</span>
+            </div>
+        </a>
+
+        <a href="{% url 'orders:item' item_name='Dinner Platters' %}" class="col-10 col-md-3 ml-md-5 mb-4">
+            <div class="menu-dinner_platter-bg"></div>
+            <div class="menu-title">
+                <span>Dinner Platters</span>
+            </div>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Menu: {{ title }}{% endblock %}
+
+{% block body %}
+    <div id="list_diplay">
+        {% if menu_type == "pizza" %}
+
+            {% for item in list %}
+                <div class="row justify-content-center mb-3">
+                    <a href="{% url 'orders:pizza_size' pizza_type=title pizza_top_type=item.pizza_topping_number.pizza_topping_number %}" class="col-10 col-md-4 item-list" data-topping="{{ item.pizza_topping_number.topping_number }}">
+                        <div class="row">
+                            <div class="col py-3 pl-md-4">
+                                <span>{{ item.pizza_topping_number.pizza_topping_number }}</span>
+                            </div>
+                            <div class="col text-right py-2">
+                                <span>Small: ${{ item.small_price }}<br>Large: ${{ item.large_price }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+        {% elif menu_type == "sub" %}
+
+            {% for item in list %}
+                <div class="row justify-content-center mb-2">
+                    <a href="{% url 'orders:sub_extra' item_name='Subs' sub_name=item.sub %}" class="col-10 col-md-4 item-list">
+                        <div class="row">
+                            <div class="col py-2 pl-md-4">
+                                <span>{{ item.sub }}</span>
+                            </div>
+                            {% if item.small_price %}
+                                <div class="col-7 text-right py-2">
+                                    <span>Small: ${{ item.small_price }}, Large: ${{ item.large_price }}</span>
+                                </div>
+                            {% else %}
+                                <div class="col text-right py-2">
+                                    <span>Large: ${{ item.large_price }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+        {% elif menu_type == "salad" %}
+
+            {% for item in list %}
+                <div class="row justify-content-center mb-3">
+                    <a href="{% url 'orders:pasta_salad' item_name=link item_type=item.item %}" class="col-10 col-md-4 item-list">
+                        <div class="row">
+                            <div class="col py-3 pl-md-4">
+                                <span>{{ item.item }}</span>
+                            </div>
+                            <div class="col text-right py-3">
+                                <span>${{ item.price }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+        {% elif menu_type == "dinner_platters" %}
+
+            {% for item in list %}
+                <div class="row justify-content-center mb-3">
+                    <a href="{% url 'orders:dinner_platter' item_name='Dinner Platters' item_type=item.dinner_platter %}" class="col-10 col-md-4 item-list">
+                        <div class="row">
+                            <div class="col py-3 pl-md-4">
+                                <span>{{ item.dinner_platter }}</span>
+                            </div>
+                            <div class="col text-right py-2">
+                                <span>Small: ${{ item.small_price }}<br>Large: ${{ item.large_price }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    </div>
+
+
+    <!-- {% load static %}
+    {% if not user.is_authenticated %}
+        <div id="notification_placeholder"></div>
+        <script src="{% static 'orders/item_not_logged_in.js' %}" charset="utf-8"></script>
+    {% endif %} -->
+
+{% endblock %}

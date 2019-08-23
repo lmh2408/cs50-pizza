@@ -1,0 +1,85 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Choose extra{% endblock %}
+
+{% block body %}
+
+    {% if not user.is_authenticated %}
+        <div class="row">
+            <div class="col">
+                Please log in to order item!
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col">
+            <h2>{{ sub.sub }}</h2>
+        </div>
+    </div>
+
+    <form action="{% url 'orders:sub_extra' item_name='Subs' sub_name=sub.sub %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <span>Choose size:</span>
+            </div>
+        </div>
+        <div class="row">
+            {% if sub.small_price %}
+                <div class="col">
+                    <label for="small">
+                        <input type="radio" id="small" name="size" value="sml" checked>
+                        <span>Small: ${{ sub.small_price }}</span>
+                    </label>
+                </div>
+            {% endif %}
+            {% if sub.large_price %}
+                <div class="col">
+                    <label for="large">
+                        <input type="radio" id="large" name="size" value="lrg">
+                        <span>Large: ${{ sub.large_price }}</span>
+                    </label>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col-10 col-md-3">
+                <input class="form-control" type="number" name="quantity" placeholder="How many?" value="1" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <span>Extras (optional):</span>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for item in extra %}
+            <div class="col-10 col-md-6">
+                <label for="{{ item.sub_extra }}">
+                    <input type="checkbox" name="extra[]" id="{{ item.sub_extra }}" value="{{ item.sub_extra }}">
+                    <span>{{ item.sub_extra }} (S: ${{ item.small_price }}, L: ${{ item.large_price }})</span>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary">Order</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col">
+                    Please log in to order item!
+                </div>
+            </div>
+        {% endif %}
+
+    </form>
+
+{% endblock %}

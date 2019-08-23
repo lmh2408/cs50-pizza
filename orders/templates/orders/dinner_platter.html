@@ -1,0 +1,51 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Confirm{% endblock %}
+
+
+{% block body %}
+    <form action="{% url 'orders:dinner_platter' item_name=item_name item_type=item.dinner_platter %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <h2>{{ item.dinner_platter }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% if item.small_price %}
+                <div class="col">
+                    <label for="small">
+                        <input type="radio" id="small" name="size" value="sml" checked>
+                        <span>Small: ${{ item.small_price }}</span>
+                    </label>
+                </div>
+            {% endif %}
+            {% if item.large_price %}
+                <div class="col">
+                    <label for="large">
+                        <input type="radio" id="large" name="size" value="lrg">
+                        <span>Large: ${{ item.large_price }}</span>
+                    </label>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-10 col-md-3">
+                <input class="form-control" type="number" name="quantity" placeholder="How many?" value="1" required>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary">Order</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col">
+                    Please log in to order item!
+                </div>
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

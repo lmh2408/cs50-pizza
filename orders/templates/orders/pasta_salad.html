@@ -1,0 +1,38 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Confirm{% endblock %}
+
+
+{% block body %}
+    <form action="{% url 'orders:pasta_salad' item_name=item_name item_type=item.item %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <h2>{{ item.item }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span>Price: ${{ item.price }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 col-md-3">
+                <input class="form-control" type="number" name="quantity" placeholder="How many?" value="1" required>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary">Order</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col">
+                    Please log in to order item!
+                </div>
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

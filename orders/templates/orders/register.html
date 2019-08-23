@@ -1,0 +1,33 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="row mb-5">
+        <div class="col text-center">
+            <p class="display-4">Register</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 col-md-3">
+            <form action="{% url 'orders:register' %}" method="POST">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col text-center">
+                        <input type="text" name="username" class="form-control" placeholder="Enter username">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col text-center">
+                        <input type="password" name="password" class="form-control" placeholder="Enter password">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
