@@ -8,6 +8,8 @@ On the cart page, you can view total cost of items in it can either finalize the
 
 If you are a superuser, you can use adminer UI tool to view transaction, change the delivery status of each invidual transaction, add items to menu.
 
-My apology to everyone who reads this code. 
-I felt stupid after coding this because I realized I could have shorten the code by half with proper models planning.
+Download this repository and run following commands:
 
+pip install requirement.txt
+
+python manage.py runserver
